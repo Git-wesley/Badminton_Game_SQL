@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5877FF0E1DC6E4BF0094EBA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877FF0D1DC6E4BF0094EBA2 /* AppDelegate.swift */; };
-		5877FF101DC6E4BF0094EBA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877FF0F1DC6E4BF0094EBA2 /* ViewController.swift */; };
+		5877FF101DC6E4BF0094EBA2 /* AddUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877FF0F1DC6E4BF0094EBA2 /* AddUsersViewController.swift */; };
 		5877FF131DC6E4BF0094EBA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877FF111DC6E4BF0094EBA2 /* Main.storyboard */; };
 		5877FF151DC6E4BF0094EBA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5877FF141DC6E4BF0094EBA2 /* Assets.xcassets */; };
 		5877FF181DC6E4BF0094EBA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877FF161DC6E4BF0094EBA2 /* LaunchScreen.storyboard */; };
@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		5877FF0A1DC6E4BF0094EBA2 /* Badminton Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Badminton Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5877FF0D1DC6E4BF0094EBA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5877FF0F1DC6E4BF0094EBA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5877FF0F1DC6E4BF0094EBA2 /* AddUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUsersViewController.swift; sourceTree = "<group>"; };
 		5877FF121DC6E4BF0094EBA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5877FF141DC6E4BF0094EBA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5877FF171DC6E4BF0094EBA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				5877FF0D1DC6E4BF0094EBA2 /* AppDelegate.swift */,
-				5877FF0F1DC6E4BF0094EBA2 /* ViewController.swift */,
+				5877FF0F1DC6E4BF0094EBA2 /* AddUsersViewController.swift */,
 				5877FF111DC6E4BF0094EBA2 /* Main.storyboard */,
 				5877FF141DC6E4BF0094EBA2 /* Assets.xcassets */,
 				5877FF161DC6E4BF0094EBA2 /* LaunchScreen.storyboard */,
@@ -197,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = hangge;
 				TargetAttributes = {
 					5877FF091DC6E4BF0094EBA2 = {
@@ -272,7 +272,7 @@
 				5877FF451DC6E5790094EBA2 /* String-Extras.swift in Sources */,
 				5877FF431DC6E5790094EBA2 /* SQLiteDB.swift in Sources */,
 				5877FF441DC6E5790094EBA2 /* SQLTable.swift in Sources */,
-				5877FF101DC6E4BF0094EBA2 /* ViewController.swift in Sources */,
+				5877FF101DC6E4BF0094EBA2 /* AddUsersViewController.swift in Sources */,
 				5877FF0E1DC6E4BF0094EBA2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +344,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -394,6 +395,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

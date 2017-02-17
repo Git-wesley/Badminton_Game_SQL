@@ -130,8 +130,10 @@ class SQLiteDB:NSObject {
 	func alert(msg:String) {
 		DispatchQueue.main.async {
 #if os(iOS)
-			let alert = UIAlertView(title: "SQLiteDB", message:msg, delegate: nil, cancelButtonTitle: "OK")
-			alert.show()
+			//let alert = UIAlertView(title: "SQLiteDB", message:msg, delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertController(title: "SQLiteDB", message: msg, preferredStyle: .alert)
+			//alert.show()
+            alert.present(alert, animated: true, completion: nil)
 #else
 			let alert = NSAlert()
 			alert.addButton(withTitle:"OK")

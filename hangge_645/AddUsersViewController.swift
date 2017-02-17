@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AddUsersViewController: UIViewController {
     
     var db:SQLiteDB!
     
