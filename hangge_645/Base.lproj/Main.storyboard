@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="CWa-8B-qsT">
             <objects>
-                <tabBarController id="F6j-YV-AMI" sceneMemberID="viewController">
+                <tabBarController id="F6j-YV-AMI" customClass="TabBarController" customModule="Badminton_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ejR-7L-gD9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -118,7 +117,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="比赛" id="pqk-Tb-5sO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3lR-lN-bvG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3lR-lN-bvG">
+                            <connections>
+                                <segue destination="X7G-HM-8bY" kind="showDetail" id="doO-oQ-rih"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ib-xP-dfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,7 +132,7 @@
         <scene sceneID="qP4-ce-Nuh">
             <objects>
                 <navigationController id="RcK-2V-Reg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="M5X-al-YDt"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="M5X-al-YDt" userLabel="比赛"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VAZ-zg-GFJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -146,7 +149,7 @@
         <scene sceneID="MMc-dr-RlK">
             <objects>
                 <navigationController id="6yG-7K-OUy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3op-5c-XZd"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="3op-5c-XZd" userLabel="用户"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kRy-Ar-w1x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -222,6 +225,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2479" y="-342"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Jn6-Xf-eMH">
+            <objects>
+                <viewController id="X7G-HM-8bY" customClass="DetailViewController" customModule="NavigationComb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cLy-n5-w2q"/>
+                        <viewControllerLayoutGuide type="bottom" id="J4h-AV-bBp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xu9-eX-XPt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail View Controller" id="hDm-mS-1YA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="O8x-8e-onU"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnz-Yt-s7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2273" y="609"/>
         </scene>
     </scenes>
 </document>
