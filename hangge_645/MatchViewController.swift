@@ -11,8 +11,8 @@ import UIKit
 class MatchViewController: UIViewController {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         let navigationController = self.parent as! UINavigationController
         let selecItem = navigationController.tabBarItem.title!
@@ -24,8 +24,6 @@ class MatchViewController: UIViewController {
             self.navigationItem.title = "比赛结果信息"
         }
     }
-    
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

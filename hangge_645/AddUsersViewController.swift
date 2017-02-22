@@ -8,55 +8,104 @@
 
 import UIKit
 
-class AddUsersViewController: UIViewController {
+class AddUsersViewController: UIViewController, UITextFieldDelegate {
     
+    //数据持久对象db
     var db:SQLiteDB!
+    
+    //业务逻辑对象BL
+    var bl = UserBL()
     
     @IBOutlet var txtUname: UITextField!
     @IBOutlet var txtMobile: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //获取数据库实例
-        db = SQLiteDB.sharedInstance
-        //如果表还不存在则创建表（其中uid为自增主键）
-        let result = db.execute(sql: "create table if not exists t_user(uid integer primary key,uname varchar(20),mobile varchar(20))")
-        print(result)
-        //如果有数据则加载
-        initUser()
+    var dropBoxView_currentTitle : String = ""
+ 
+    @IBAction func DoneCloseKeyBoard(_ sender: Any) {
+        txtMobile.resignFirstResponder()
     }
+    override func viewDidLoad() {
+     
+        super.viewDidLoad()
+        self.txtUname.delegate = self
+        self.txtUname.becomeFirstResponder()
+        
+        //下拉选择框
+        self.view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+        let defaultTitle = "中级"
+        self.dropBoxView_currentTitle = defaultTitle
+        let choices = ["高级", "中级", "初级"]
+        let rect = CGRect(x: 135, y: 310, width: 130, height: 30)
+        let dropBoxView = TGDropBoxView(parentVC: self, title: defaultTitle, items: choices, frame: rect)
+        
+        dropBoxView.isHightWhenShowList = true
+        dropBoxView.willShowOrHideBoxListHandler = { (isShow) in
+            if isShow { NSLog("will show choices") }
+            else { NSLog("will hide choices") }
+        }
+        dropBoxView.didShowOrHideBoxListHandler = { (isShow) in
+            if isShow { NSLog("did show choices") }
+            else { NSLog("did hide choices") }
+        }
+        dropBoxView.didSelectBoxItemHandler = { (row) in
+            NSLog("selected No.\(row): \(dropBoxView.currentTitle())")
+            self.dropBoxView_currentTitle = dropBoxView.currentTitle()
+        }
+        self.view.addSubview(dropBoxView)
+}
     
-
+    func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        txtMobile.resignFirstResponder()
+    }
     //点击保存
     @IBAction func saveClicked(_ sender: AnyObject) {
-        saveUser()
+        
+        let user = User()
+        user.date = Date() as NSDate
+        user.name = txtUname.text! as NSString
+        user.nickname = ""
+        user.grade = self.dropBoxView_currentTitle as NSString
+        user.score = 500
+        user.mobile = txtMobile.text! as NSString
+        
+        let reslist = bl.createUser(user) //(user)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotification"), object: reslist, userInfo: nil)
+        self.dismiss(animated: true, completion: nil)
+
     }
     
     //从SQLite加载数据
     func initUser() {
-        let data = db.query(sql: "select * from t_user")
+        let data = db.query(sql: "select * from B_user")
         if data.count > 0 {
             //获取最后一行数据显示
             let user = data[data.count - 1]
             txtUname.text = user["uname"] as? String
-            txtMobile.text = user["mobile"] as? String
+            txtMobile.text = user["umobile"] as? String
+        } else {
+            NSLog("数据库是空的")
         }
-    }
-    
-    //保存数据到SQLite
-    func saveUser() {
-        let uname = self.txtUname.text!
-        let mobile = self.txtMobile.text!
-        //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
-        let sql = "insert into t_user(uname,mobile) values('\(uname)','\(mobile)')"
-        print("sql: \(sql)")
-        //通过封装的方法执行sql
-        let result = db.execute(sql: sql)
-        print(result)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        //收起键盘
+        NSLog("textFieldShouldReturn")
+        self.txtUname.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    
+
 }
