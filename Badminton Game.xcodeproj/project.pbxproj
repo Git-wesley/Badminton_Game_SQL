@@ -61,7 +61,7 @@
 		E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E05C87F21E5882020051468A /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		E05C87F41E5894FD0051468A /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
-		E05C87F61E5AD94A0051468A /* tabicons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tabicons; path = hangge_645/tabicons; sourceTree = "<group>"; };
+		E05C87F61E5AD94A0051468A /* tabicons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tabicons; path = "Badminton Game/tabicons"; sourceTree = "<group>"; };
 		E05C87F81E5BDA0B0051468A /* DropBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxView.swift; sourceTree = "<group>"; };
 		E05C88021E5C26DB0051468A /* UserDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDAO.swift; path = ../PersistenceLayer/dao/UserDAO.swift; sourceTree = "<group>"; };
 		E05C88041E5C26E90051468A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../PersistenceLayer/domain/User.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 				5877FF191DC6E4BF0094EBA2 /* Info.plist */,
 			);
 			name = "Badminton game";
-			path = hangge_645;
+			path = "Badminton Game";
 			sourceTree = "<group>";
 		};
 		5877FF3B1DC6E50F0094EBA2 /* Frameworks */ = {
@@ -442,7 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = hangge_645/Info.plist;
+				INFOPLIST_FILE = "Badminton Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wesley.du;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -455,7 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = hangge_645/Info.plist;
+				INFOPLIST_FILE = "Badminton Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wesley.du;
 				PRODUCT_NAME = "$(TARGET_NAME)";
