@@ -50,22 +50,29 @@ public struct Match {
     public var id_M_no : Int
     public var team1 : Team
     public var team2 : Team
+    public var result : NSString = ""
+    public var result_bool : Bool  // true team1 win, false team 2 win
+    public var mdate : NSDate
  
-    public init(in_M_no : Int,team1 : Team ,team2 : Team){
-        self.id_M_no = 0
+    public init(in_M_no : Int,team1 : Team ,team2 : Team, result : NSString , result_bool : Bool, mdate : NSDate){
+        self.id_M_no = in_M_no
         self.team1 = team1
         self.team2 = team2
+        self.result = result
+        self.result_bool = result_bool
+        self.mdate = mdate
     }
+    
 }
 
 //创建team结构
  public struct Team {
     
-    var double_team : [String] = ["",""]
-    var user1 : String
-    var user2 : String
+    var double_team : [NSString] = ["",""]
+    var user1 : NSString
+    var user2 : NSString
     
-    public init(user1 : String, user2 : String){
+    public init(user1 : NSString, user2 : NSString){
         
          self.user1 = user1
          self.user2 = user2
@@ -73,6 +80,7 @@ public struct Match {
          self.double_team[1] = user2
     }
 }
+
 /*
 open class Double_Team {
  

@@ -12,7 +12,6 @@
 import Foundation
 
 let usersTableName : String = "B_userDemo"
-let matchesTableName : String = "B_match"
 
     open class UserDAO {
         
@@ -24,12 +23,9 @@ let matchesTableName : String = "B_match"
             instance.db = SQLiteDB.sharedInstance
             let sqlUsersTable = "create table if not exists '\(usersTableName)'(uid integer primary key, uname varchar(20) , unick varchar(20), ugrade varchar(20), uscore integer, umobile varchar(20), udate TIMESTAMP)"
             
-            let sqlMatchesTable = "create table if not exists '\(matchesTableName)'(mid integer primary key, uname1 varchar(20) , uname2 varchar(20) ,uname3 varchar(20) ,uname4 varchar(20) , mdate TIMESTAMP)"
             let result_User = instance.db.execute(sql: sqlUsersTable)
-            let result_Match = instance.db.execute(sql: sqlMatchesTable)
             
             print(result_User)
-            print(result_Match)
             
             return instance
         }()
@@ -54,6 +50,7 @@ let matchesTableName : String = "B_match"
     }
 
         //转换match类型到字典类型
+        /*
     open func matchToDictionary(id_M_no : Int, user1 : String, user2 : String, user3 : String, user4 : String) -> NSDictionary {
 
         let team1 = Team(user1: user1, user2: user2)
@@ -62,7 +59,7 @@ let matchesTableName : String = "B_match"
         
         return dict
      
-  }
+  }*/
 
     //删除User方法 DELETE FROM T_Person WHERE id =
     open func remove(_ model: User) -> Int {

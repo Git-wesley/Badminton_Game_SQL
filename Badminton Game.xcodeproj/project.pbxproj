@@ -18,12 +18,15 @@
 		E05C87ED1E56D3630051468A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05C87EC1E56D3630051468A /* Main.storyboard */; };
 		E05C87EF1E56D3D50051468A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */; };
 		E05C87F31E5882030051468A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C87F21E5882020051468A /* UsersTableViewController.swift */; };
-		E05C87F51E5894FD0051468A /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C87F41E5894FD0051468A /* MatchViewController.swift */; };
+		E05C87F51E5894FD0051468A /* AddMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C87F41E5894FD0051468A /* AddMatchViewController.swift */; };
 		E05C87F71E5AD94A0051468A /* tabicons in Resources */ = {isa = PBXBuildFile; fileRef = E05C87F61E5AD94A0051468A /* tabicons */; };
 		E05C87F91E5BDA0B0051468A /* DropBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C87F81E5BDA0B0051468A /* DropBoxView.swift */; };
 		E05C88031E5C26DB0051468A /* UserDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88021E5C26DB0051468A /* UserDAO.swift */; };
 		E05C88051E5C26E90051468A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88041E5C26E90051468A /* User.swift */; };
 		E05C88081E5D1E130051468A /* UserBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88071E5D1E130051468A /* UserBL.swift */; };
+		E05C88181E5E7EF80051468A /* MatchDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88171E5E7EF80051468A /* MatchDAO.swift */; };
+		E05C881A1E5E8A840051468A /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88191E5E8A840051468A /* MatchesTableViewController.swift */; };
+		E05C881C1E5E8C3D0051468A /* MatchBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C881B1E5E8C3D0051468A /* MatchBL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,12 +63,15 @@
 		E05C87EC1E56D3630051468A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E05C87F21E5882020051468A /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
-		E05C87F41E5894FD0051468A /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		E05C87F41E5894FD0051468A /* AddMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMatchViewController.swift; sourceTree = "<group>"; };
 		E05C87F61E5AD94A0051468A /* tabicons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tabicons; path = "Badminton Game/tabicons"; sourceTree = "<group>"; };
 		E05C87F81E5BDA0B0051468A /* DropBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxView.swift; sourceTree = "<group>"; };
 		E05C88021E5C26DB0051468A /* UserDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDAO.swift; path = ../PersistenceLayer/dao/UserDAO.swift; sourceTree = "<group>"; };
 		E05C88041E5C26E90051468A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../PersistenceLayer/domain/User.swift; sourceTree = "<group>"; };
 		E05C88071E5D1E130051468A /* UserBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserBL.swift; path = BusinessLogicLayer/UserBL.swift; sourceTree = "<group>"; };
+		E05C88171E5E7EF80051468A /* MatchDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchDAO.swift; path = PersistenceLayer/dao/MatchDAO.swift; sourceTree = SOURCE_ROOT; };
+		E05C88191E5E8A840051468A /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
+		E05C881B1E5E8C3D0051468A /* MatchBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchBL.swift; path = BusinessLogicLayer/MatchBL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +130,9 @@
 				E05C87F81E5BDA0B0051468A /* DropBoxView.swift */,
 				5877FF0D1DC6E4BF0094EBA2 /* AppDelegate.swift */,
 				E05C87F21E5882020051468A /* UsersTableViewController.swift */,
+				E05C88191E5E8A840051468A /* MatchesTableViewController.swift */,
 				5877FF0F1DC6E4BF0094EBA2 /* AddUsersViewController.swift */,
-				E05C87F41E5894FD0051468A /* MatchViewController.swift */,
+				E05C87F41E5894FD0051468A /* AddMatchViewController.swift */,
 				E05C87EC1E56D3630051468A /* Main.storyboard */,
 				5877FF141DC6E4BF0094EBA2 /* Assets.xcassets */,
 				E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */,
@@ -150,6 +157,7 @@
 				5877FF411DC6E5790094EBA2 /* SQLTable.swift */,
 				5877FF421DC6E5790094EBA2 /* String-Extras.swift */,
 				E05C88021E5C26DB0051468A /* UserDAO.swift */,
+				E05C88171E5E7EF80051468A /* MatchDAO.swift */,
 				E05C88041E5C26E90051468A /* User.swift */,
 			);
 			path = SQLiteDB;
@@ -159,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				E05C88071E5D1E130051468A /* UserBL.swift */,
+				E05C881B1E5E8C3D0051468A /* MatchBL.swift */,
 			);
 			name = BusinessLogicLayer;
 			sourceTree = "<group>";
@@ -301,11 +310,14 @@
 			files = (
 				5877FF451DC6E5790094EBA2 /* String-Extras.swift in Sources */,
 				5877FF431DC6E5790094EBA2 /* SQLiteDB.swift in Sources */,
-				E05C87F51E5894FD0051468A /* MatchViewController.swift in Sources */,
+				E05C87F51E5894FD0051468A /* AddMatchViewController.swift in Sources */,
 				E05C88031E5C26DB0051468A /* UserDAO.swift in Sources */,
 				E05C87F31E5882030051468A /* UsersTableViewController.swift in Sources */,
+				E05C881C1E5E8C3D0051468A /* MatchBL.swift in Sources */,
 				5877FF441DC6E5790094EBA2 /* SQLTable.swift in Sources */,
+				E05C88181E5E7EF80051468A /* MatchDAO.swift in Sources */,
 				E05C87F91E5BDA0B0051468A /* DropBoxView.swift in Sources */,
+				E05C881A1E5E8A840051468A /* MatchesTableViewController.swift in Sources */,
 				5877FF101DC6E4BF0094EBA2 /* AddUsersViewController.swift in Sources */,
 				5877FF0E1DC6E4BF0094EBA2 /* AppDelegate.swift in Sources */,
 				E05C88081E5D1E130051468A /* UserBL.swift in Sources */,
