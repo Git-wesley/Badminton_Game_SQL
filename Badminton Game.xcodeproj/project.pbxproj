@@ -27,6 +27,7 @@
 		E05C88181E5E7EF80051468A /* MatchDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88171E5E7EF80051468A /* MatchDAO.swift */; };
 		E05C881A1E5E8A840051468A /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88191E5E8A840051468A /* MatchesTableViewController.swift */; };
 		E05C881C1E5E8C3D0051468A /* MatchBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C881B1E5E8C3D0051468A /* MatchBL.swift */; };
+		E0989E561E600C0F00FF46FE /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0989E551E600C0F00FF46FE /* PickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		E05C88171E5E7EF80051468A /* MatchDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchDAO.swift; path = PersistenceLayer/dao/MatchDAO.swift; sourceTree = SOURCE_ROOT; };
 		E05C88191E5E8A840051468A /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
 		E05C881B1E5E8C3D0051468A /* MatchBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchBL.swift; path = BusinessLogicLayer/MatchBL.swift; sourceTree = "<group>"; };
+		E0989E551E600C0F00FF46FE /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				E05C88191E5E8A840051468A /* MatchesTableViewController.swift */,
 				5877FF0F1DC6E4BF0094EBA2 /* AddUsersViewController.swift */,
 				E05C87F41E5894FD0051468A /* AddMatchViewController.swift */,
+				E0989E551E600C0F00FF46FE /* PickerViewController.swift */,
 				E05C87EC1E56D3630051468A /* Main.storyboard */,
 				5877FF141DC6E4BF0094EBA2 /* Assets.xcassets */,
 				E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */,
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0989E561E600C0F00FF46FE /* PickerViewController.swift in Sources */,
 				5877FF451DC6E5790094EBA2 /* String-Extras.swift in Sources */,
 				5877FF431DC6E5790094EBA2 /* SQLiteDB.swift in Sources */,
 				E05C87F51E5894FD0051468A /* AddMatchViewController.swift in Sources */,

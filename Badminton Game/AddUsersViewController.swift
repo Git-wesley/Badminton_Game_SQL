@@ -56,6 +56,7 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
     func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         txtMobile.resignFirstResponder()
     }
+    
     //点击保存
     @IBAction func saveClicked(_ sender: AnyObject) {
         
@@ -67,13 +68,16 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         user.score = 500
         user.mobile = txtMobile.text! as NSString
         
-        let reslist = bl.createUser(user) //(user)
+        let reslist_User = bl.createUser(user) //(user)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotification"), object: reslist, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationUser"), object: reslist_User, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
 
     }
     
+    @IBAction func cancelClick(_ sender: Any) {
+         self.dismiss(animated: true, completion: nil)
+    }
     //从SQLite加载数据
     func initUser() {
         let data = db.query(sql: "select * from B_user")
@@ -105,7 +109,4 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
-    
-
 }

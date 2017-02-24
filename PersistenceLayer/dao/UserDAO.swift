@@ -84,11 +84,6 @@ let usersTableName : String = "B_userDemo"
         let umobile = model.mobile
         let udate = model.date
         
-        /*let nowDate = NSDate()
-         let formatter = DateFormatter()
-         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-         let udate = formatter.string(from: nowDate as Date)
-         */
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
         let sql = "insert into  \(usersTableName)(uname, unick, ugrade, uscore, umobile, udate) values('\(uname)','\(unick_name)','\(ugrade)','\(uscore)','\(umobile)','\(udate)')"
         print("sql: \(sql)")

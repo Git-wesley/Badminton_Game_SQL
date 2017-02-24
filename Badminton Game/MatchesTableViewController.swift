@@ -15,7 +15,7 @@ class MatchesTableViewController: UITableViewController {
     //保存数据列表
     var listDataMatches = NSMutableArray()
     //业务逻辑对象BL
-    var bl = MatchBL()
+    var bl_layer = MatchBL()
     
     
     override func viewDidLoad() {
@@ -29,12 +29,13 @@ class MatchesTableViewController: UITableViewController {
         if (selecItem == "比赛") {
             self.navigationItem.title = "比赛信息"
             //查询所有的数据
-            self.listDataMatches = bl.findAllMatch()
+            self.listDataMatches = bl_layer.findAllMatch()
             
         }
+        
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(MatchesTableViewController.reloadView(_:)),
-                                               name: NSNotification.Name(rawValue: "reloadViewNotification"),
+                                               selector: #selector(MatchesTableViewController.reloadViewMatch(_:)),
+                                               name: NSNotification.Name(rawValue: "reloadViewNotificationMatch"),
                                                object: nil)
         
         
@@ -63,11 +64,12 @@ class MatchesTableViewController: UITableViewController {
     //数据显示到table view中
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let array = self.listDataMatches
+        let array = self.listDataMatches //bl_layer.findAllMatch()
         let cellIdentifier = "CellMIdentifier"
         let cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for:indexPath)
         let row = indexPath.row
         let matchdata = array[row] as! Match
+        
         //通过tag来控制在table中的label 101 user1, 102 user2, 103 user3, 104 user4, 105 socre, 106 date, 107 time
         
         let user1_label = cell.viewWithTag(101) as! UILabel
@@ -102,20 +104,20 @@ class MatchesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let match = self.listDataMatches[indexPath.row] as! Match
-            self.listDataMatches = bl.removeMatch(match)
+            self.listDataMatches = bl_layer.removeMatch(match)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
     // MARK: --处理通知
-    func reloadView(_ notification : Notification) {
-        let resList = notification.object as! NSMutableArray
-        self.listDataMatches = resList
+    func reloadViewMatch(_ notification : Notification) {
+        let resList_Match = notification.object as! NSMutableArray
+        self.listDataMatches = resList_Match
         self.tableView.reloadData()
     }
     
-
-    /*
+/*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 

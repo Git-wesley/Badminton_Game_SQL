@@ -36,8 +36,8 @@ class UsersTableViewController: UITableViewController {
            
         }
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(UsersTableViewController.reloadView(_:)),
-                                               name: NSNotification.Name(rawValue: "reloadViewNotification"),
+                                               selector: #selector(UsersTableViewController.reloadViewUser(_:)),
+                                               name: NSNotification.Name(rawValue: "reloadViewNotificationUser"),
                                                object: nil)
 
         
@@ -106,14 +106,14 @@ class UsersTableViewController: UITableViewController {
 
     
           // MARK: --处理通知
-    func reloadView(_ notification : Notification) {
-        let resList = notification.object as! NSMutableArray
-        self.listDataUser = resList
+    func reloadViewUser(_ notification : Notification) {
+        let resList_User = notification.object as! NSMutableArray
+        self.listDataUser = resList_User
         self.tableView.reloadData()
     }
 
 
-    /*
+ /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 

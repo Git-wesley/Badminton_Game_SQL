@@ -14,13 +14,14 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
     
     //业务逻辑对象BL
     var bl = MatchBL()
+    var Select_User : [String] = []
+    var segueValue :String = ""
+    
     @IBOutlet weak var m_user1: UITextField!
     @IBOutlet weak var m_user3: UITextField!
     @IBOutlet weak var m_user2: UITextField!
     @IBOutlet weak var m_user4: UITextField!
-
     @IBOutlet weak var Ascore: UITextField!
-    
     @IBOutlet weak var Bscore: UITextField!
     
     override func viewDidLoad() {
@@ -38,6 +39,13 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
         self.Ascore.becomeFirstResponder()
         self.Bscore.delegate = self
         self.Bscore.becomeFirstResponder()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(MatchViewController.reloadViewSelectUser(_:)),
+                                               name: NSNotification.Name(rawValue: "reloadViewNotificationSelectUser"),
+                                               object: nil)
+        
+
 
 
 }
@@ -65,13 +73,16 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
         
         let match = Match(in_M_no: 0, team1: team1, team2: team2, result : mResult, result_bool : mResult_bool, mdate: mdate)
         
-        let reslist = bl.createMatch(match) //(user)
+        let reslist_Match = bl.createMatch(match) //(user)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotification"), object: reslist, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationMatch"), object: reslist_Match, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
 
+    @IBAction func cancelClick(_ sender: Any) {
+         self.dismiss(animated: true, completion: nil)
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         //收起键盘
@@ -94,31 +105,75 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
     }
     
     func getMatchResult(Ascore : UITextField, Bscore : UITextField ) -> Bool {
-    
         let scoreA = stringToInt(str: Ascore.text! as String)
-    
         let scoreB = stringToInt(str: Bscore.text! as String)
         if (scoreA > scoreB){
-         
             return true
-            
         }else {
         return false
         }
     }
-        func stringToInt(str:String)->(Int){
+    func stringToInt(str:String)->(Int){
             
-            let string = str
-            var int: Int?
-            if let doubleValue = Int(string) {
-                int = Int(doubleValue)
-            }
-            if int == nil
-            {
-                return 0
-            }
-            return int!
+        let string = str
+        var int: Int?
+        if let doubleValue = Int(string) {
+            int = Int(doubleValue)
+        }
+        if int == nil
+        {
+            return 0
+        }
+        return int!
 
+    }
+    
+    // MARK: --选择表视图行时触发
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        var segueCharacters = ""
+        segueCharacters = segue.identifier!
+        
+        switch segueCharacters {
+        case  "IdentifierUser1" :
+            self.segueValue = "User1"
+        case "IdentifierUser2" :
+            self.segueValue = "User2"
+        case "IdentifierUser3" :
+            self.segueValue = "User3"
+        case  "IdentifierUser4" :
+            self.segueValue = "User4"
+        default :
+            self.segueValue = "User1"
+         
+        }
+        if (segue.identifier == "IdentifierUser2") {
+            self.segueValue = "User2"
+        }
+        
+    }
+
+    // MARK: --处理通知
+    func reloadViewSelectUser(_ notification : Notification) {
+        let resList_Match = notification.object as! NSArray
+        self.Select_User = resList_Match as! [String]
+        
+        switch segueValue {
+        case "User1" :
+            m_user1.text = self.Select_User[1]
+        case "User2" :
+            m_user2.text = self.Select_User[1]
+        case "User3" :
+            m_user3.text = self.Select_User[1]
+        case "User4" :
+            m_user4.text = self.Select_User[1]
+            
+        default:
+            m_user4.text = self.Select_User[1]
+        }
+        
+        //self.tableView.reloadData()
+        
     }
 
     /*
