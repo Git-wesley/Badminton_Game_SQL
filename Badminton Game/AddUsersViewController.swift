@@ -67,11 +67,27 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         user.grade = self.dropBoxView_currentTitle as NSString
         user.score = 500
         user.mobile = txtMobile.text! as NSString
-        
-        let reslist_User = Userbl.createUser(user) //(user)
+        var reslist_User = Userbl.findByName(user)
+        if reslist_User.count > 0{
+            NSLog("用户名重复")
+            let alertController = UIAlertController(title: "系统提示",
+                                                    message: "用户名重复", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "好的", style: .default, handler: nil )/*{
+                action in
+                print("点击了确定")
+            })*/
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: false, completion: nil)
+            
+        } else {
+            reslist_User = Userbl.createUser(user) //(user)
+       
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationUser"), object: reslist_User, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
+        }
 
     }
     

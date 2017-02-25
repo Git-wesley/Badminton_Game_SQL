@@ -70,7 +70,6 @@ class UsersTableViewController: UITableViewController {
             let indexPath = self.tableView.indexPathForSelectedRow! as IndexPath
             let selectedIndex = indexPath.row
             }
-        
     }
 
     // MARK: - Table view data source
