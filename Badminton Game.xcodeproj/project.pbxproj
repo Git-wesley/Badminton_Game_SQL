@@ -28,6 +28,7 @@
 		E05C881A1E5E8A840051468A /* MatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C88191E5E8A840051468A /* MatchesTableViewController.swift */; };
 		E05C881C1E5E8C3D0051468A /* MatchBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C881B1E5E8C3D0051468A /* MatchBL.swift */; };
 		E0989E561E600C0F00FF46FE /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0989E551E600C0F00FF46FE /* PickerViewController.swift */; };
+		E0989E581E608D4800FF46FE /* ScoreBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0989E571E608D4800FF46FE /* ScoreBL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		E05C88191E5E8A840051468A /* MatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewController.swift; sourceTree = "<group>"; };
 		E05C881B1E5E8C3D0051468A /* MatchBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchBL.swift; path = BusinessLogicLayer/MatchBL.swift; sourceTree = "<group>"; };
 		E0989E551E600C0F00FF46FE /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		E0989E571E608D4800FF46FE /* ScoreBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				E05C88071E5D1E130051468A /* UserBL.swift */,
 				E05C881B1E5E8C3D0051468A /* MatchBL.swift */,
+				E0989E571E608D4800FF46FE /* ScoreBL.swift */,
 			);
 			name = BusinessLogicLayer;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				E05C881C1E5E8C3D0051468A /* MatchBL.swift in Sources */,
 				5877FF441DC6E5790094EBA2 /* SQLTable.swift in Sources */,
 				E05C88181E5E7EF80051468A /* MatchDAO.swift in Sources */,
+				E0989E581E608D4800FF46FE /* ScoreBL.swift in Sources */,
 				E05C87F91E5BDA0B0051468A /* DropBoxView.swift in Sources */,
 				E05C881A1E5E8A840051468A /* MatchesTableViewController.swift in Sources */,
 				5877FF101DC6E4BF0094EBA2 /* AddUsersViewController.swift in Sources */,

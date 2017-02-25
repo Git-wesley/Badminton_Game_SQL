@@ -17,6 +17,7 @@ class UsersTableViewController: UITableViewController {
     var listDataUser = NSMutableArray()
     //业务逻辑对象BL
     var bl = UserBL()
+    var scoreBL = ScoreBL()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,21 +29,34 @@ class UsersTableViewController: UITableViewController {
         let selecItem = navigationController.tabBarItem.title!
         
         NSLog("%@", selecItem)
-        
         if (selecItem == "用户") {
             self.navigationItem.title = "用户信息"
             //查询所有的数据
             self.listDataUser = bl.findAllUser()
            
         }
+        
+        //初始化刷新
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: #selector(refreshData),
+                                       for: .valueChanged)
+        self.refreshControl!.attributedTitle = NSAttributedString(string: "下拉刷新数据")
+        refreshData()
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(UsersTableViewController.reloadViewUser(_:)),
                                                name: NSNotification.Name(rawValue: "reloadViewNotificationUser"),
                                                object: nil)
-
-        
+       
 }
-
+    // 刷新数据
+    func refreshData() {
+        
+        self.listDataUser = bl.findAllUser()
+        self.tableView.reloadData()
+        self.refreshControl!.endRefreshing()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,13 +69,7 @@ class UsersTableViewController: UITableViewController {
             
             let indexPath = self.tableView.indexPathForSelectedRow! as IndexPath
             let selectedIndex = indexPath.row
-            // let dict = self.listData[selectedIndex] as! NSDictionary
-            
-            // let detailViewController = segue.destination as! DetailViewController
-            // detailViewController.url = dict["url"] as! String
-            //  detailViewController.title = dict["name"] as? String
-            
-        }
+            }
         
     }
 
@@ -85,7 +93,7 @@ class UsersTableViewController: UITableViewController {
         let cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for:indexPath)
         let row = indexPath.row
         let userdata = array[row] as! User
-        cell.textLabel?.text = userdata.name as String
+        cell.textLabel?.text = userdata.name as String        
         cell.detailTextLabel?.text = String(userdata.score)
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -111,61 +119,5 @@ class UsersTableViewController: UITableViewController {
         self.listDataUser = resList_User
         self.tableView.reloadData()
     }
-
-
- /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

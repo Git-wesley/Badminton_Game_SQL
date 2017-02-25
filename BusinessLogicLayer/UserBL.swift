@@ -36,25 +36,38 @@ open class UserBL {
     }
     
    
-     //插入Note方法
+     //插入user方法
      open func createUser(_ model: User) -> NSMutableArray {
      let dao:UserDAO = UserDAO.sharedInstance
      dao.create(model)
      return dao.findAll()
      }
     
-     //删除Note方法
-     open func removeUser(_ model: User) -> NSMutableArray {
+     //修改user方法
+     open func modifyUser(_ model: User) -> NSMutableArray {
      let dao:UserDAO = UserDAO.sharedInstance
-     dao.remove(model)
+     dao.modify(model)
      return dao.findAll()
      }
     
+    //删除user方法
+    open func removeUser(_ model: User) -> NSMutableArray {
+        let dao:UserDAO = UserDAO.sharedInstance
+        dao.remove(model)
+        return dao.findAll()
+    }
+
      //查询所用数据方法
      open func findAllUser() -> NSMutableArray {
      let dao:UserDAO = UserDAO.sharedInstance
      return dao.findAll()
      }
- 
+    //查询所用数据方法
+    open func findByName(_ model: User) -> NSMutableArray {
+        let dao:UserDAO = UserDAO.sharedInstance
+        return dao.findByName(model)
+    }
+    
+
 }
 

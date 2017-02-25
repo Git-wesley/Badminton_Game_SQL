@@ -13,7 +13,10 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
     var db:SQLiteDB!
     
     //业务逻辑对象BL
-    var bl = MatchBL()
+    var Matchbl = MatchBL()
+    var userbl = UserBL()
+    var scoreBL = ScoreBL()
+    
     var Select_User : [String] = []
     var segueValue :String = ""
     
@@ -70,15 +73,53 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
         let team1 = Team(user1: mName1,user2: mName2)
         let team2 = Team(user1: mName3,user2: mName4)
         
+        let user1 = User()
+        let user2 = User()
+        let user3 = User()
+        let user4 = User()
+        user1.name = mName1
+        user2.name = mName2
+        user3.name = mName3
+        user4.name = mName4
+        let user1Score = getUserScore(user: user1)
+        let user2Score = getUserScore(user: user2)
+        let user3Score = getUserScore(user: user3)
+        let user4Score = getUserScore(user: user4)
+        let team1Average = (user1Score + user2Score)/2
+        let team2Average = (user3Score + user4Score)/2
+        updateUser(user: user1, result_bool: mResult_bool, pkAverageScore: team2Average)
+        updateUser(user: user2, result_bool: mResult_bool, pkAverageScore: team2Average)
+        updateUser(user: user3, result_bool: !mResult_bool, pkAverageScore: team1Average)
+        updateUser(user: user4, result_bool: !mResult_bool, pkAverageScore: team1Average)
         
         let match = Match(in_M_no: 0, team1: team1, team2: team2, result : mResult, result_bool : mResult_bool, mdate: mdate)
         
-        let reslist_Match = bl.createMatch(match) //(user)
+        let reslist_Match = Matchbl.createMatch(match) //(user)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationMatch"), object: reslist_Match, userInfo: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
+    func getUserScore(user : User)-> Double{
+        
+        //user1.name = mName1
+        let listData = userbl.findByName(user)
+        let userdata = listData[0] as! User
+        let score = Double(String(userdata.score))
+        return score!
+    }
+    
+    func updateUser(user : User, result_bool : Bool, pkAverageScore : Double)-> Void{
+        
+        //user1.name = mName1
+        let listData = userbl.findByName(user)
+        let userdata = listData[0] as! User
+        let score = Double(String(userdata.score))
+        let different_score = pkAverageScore - score!
+        user.score = scoreBL.calculateScore(initscore: score!, Result_bool: result_bool, differentScore: different_score)
+        
+        userbl.modifyUser(user)
+    }
 
     @IBAction func cancelClick(_ sender: Any) {
          self.dismiss(animated: true, completion: nil)

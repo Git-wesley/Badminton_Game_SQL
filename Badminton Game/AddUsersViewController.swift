@@ -14,7 +14,7 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
     var db:SQLiteDB!
     
     //业务逻辑对象BL
-    var bl = UserBL()
+    var Userbl = UserBL()
     
     @IBOutlet var txtUname: UITextField!
     @IBOutlet var txtMobile: UITextField!
@@ -68,7 +68,7 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         user.score = 500
         user.mobile = txtMobile.text! as NSString
         
-        let reslist_User = bl.createUser(user) //(user)
+        let reslist_User = Userbl.createUser(user) //(user)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationUser"), object: reslist_User, userInfo: nil)
         self.dismiss(animated: true, completion: nil)

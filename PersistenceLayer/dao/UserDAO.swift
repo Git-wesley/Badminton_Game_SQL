@@ -78,14 +78,15 @@ let usersTableName : String = "B_userDemo"
     open func modify(_ model: User) -> Int {
 
         let uname = model.name
-        let unick_name = model.nickname
+        //let unick_name = model.nickname
+        //let umobile = model.mobile
+        //let udate = model.date
         let ugrade = model.grade
+        let id_no = model.id_no
         let uscore = model.score
-        let umobile = model.mobile
-        let udate = model.date
-        
+       
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
-        let sql = "insert into  \(usersTableName)(uname, unick, ugrade, uscore, umobile, udate) values('\(uname)','\(unick_name)','\(ugrade)','\(uscore)','\(umobile)','\(udate)')"
+        let sql = " update  \(usersTableName) set ugrade = '\(ugrade)', uscore = \(uscore) where uname = '\(uname)' "
         print("sql: \(sql)")
         //通过封装的方法执行sql
         let result = db.execute(sql: sql)
@@ -93,7 +94,9 @@ let usersTableName : String = "B_userDemo"
         
         return 0
     }
-        
+        /*UPDATE table_name
+        SET column1 = value1, column2 = value2...., columnN = valueN
+        WHERE [condition]*/
     //查询所有数据方法
     open func findAll() -> NSMutableArray {
 
@@ -149,4 +152,31 @@ let usersTableName : String = "B_userDemo"
         
         return listData
 }
+        //按照主键查询数据方法, 未完成
+        open func findByName(_ model: User) -> NSMutableArray {
+            
+            let uname = model.name
+            
+            let listData = NSMutableArray()
+            let data = db.query(sql: "select * from  '\(usersTableName)' where uname = '\(uname)' ")
+            if data.count > 0 {
+                //获取最后一行数据显示
+                let user = data[data.count - 1]
+                let uname = user["uname"] as? NSString
+                let unick_name = user["unick"] as? NSString
+                let ugrade = user["ugrade"] as? NSString
+                let uscore = user["uscore"] as? Int
+                let umobile = user["umobile"] as? NSString
+                let udate = user["udate"] as? NSDate
+                
+                let init_user  = User(id_no: data.count, name: uname!, nickname: unick_name!, grade: ugrade!, score: uscore!, mobile: umobile!, date: udate!)
+                listData.add(init_user)
+                
+            } else {
+                NSLog("数据库是空的")
+            }
+            
+            return listData
+        }
+
 }
