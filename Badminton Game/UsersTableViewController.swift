@@ -30,7 +30,7 @@ class UsersTableViewController: UITableViewController {
         
         NSLog("%@", selecItem)
         if (selecItem == "用户") {
-            self.navigationItem.title = "用户信息"
+            self.navigationItem.title = "用户积分排名"
             //查询所有的数据
             self.listDataUser = bl.findAllUser()
            
@@ -68,7 +68,7 @@ class UsersTableViewController: UITableViewController {
         if (segue.identifier == "ShowDetail") {
             
             let indexPath = self.tableView.indexPathForSelectedRow! as IndexPath
-            let selectedIndex = indexPath.row
+            _ = indexPath.row
             }
     }
 

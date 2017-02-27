@@ -26,7 +26,7 @@ open class UserBL {
             let data = db.query(sql: "select * from B_user")
             if data.count > 0 {
             //获取最后一行数据显示
-            let user = data[data.count - 1]
+            _ = data[data.count - 1]
             //txtUname.text = user["uname"] as? String
             //txtMobile.text = user["umobile"] as? String
             //initUser()
@@ -39,21 +39,21 @@ open class UserBL {
      //插入user方法
      open func createUser(_ model: User) -> NSMutableArray {
      let dao:UserDAO = UserDAO.sharedInstance
-     dao.create(model)
+     _  = dao.create(model)
      return dao.findAll()
      }
     
      //修改user方法
      open func modifyUser(_ model: User) -> NSMutableArray {
      let dao:UserDAO = UserDAO.sharedInstance
-     dao.modify(model)
+     _ = dao.modify(model)
      return dao.findAll()
      }
     
     //删除user方法
     open func removeUser(_ model: User) -> NSMutableArray {
         let dao:UserDAO = UserDAO.sharedInstance
-        dao.remove(model)
+        _ = dao.remove(model)
         return dao.findAll()
     }
 

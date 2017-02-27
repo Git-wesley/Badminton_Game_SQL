@@ -78,7 +78,7 @@ class MatchesTableViewController: UITableViewController {
         let user4_label = cell.viewWithTag(104) as! UILabel
         let score_label = cell.viewWithTag(105) as! UILabel
         let date_label  = cell.viewWithTag(106) as! UILabel
-        let time_label  = cell.viewWithTag(107) as! UILabel
+        //let time_label  = cell.viewWithTag(107) as! UILabel
         
         
         //cell.textLabel?.text = matchdata.team1.double_team[0] as String
@@ -88,8 +88,8 @@ class MatchesTableViewController: UITableViewController {
         user3_label.text = matchdata.team2.double_team[0] as String
         user4_label.text = matchdata.team2.double_team[1] as String
         score_label.text = matchdata.result as String
-        date_label.text  = String(describing: matchdata.mdate).subString(start: 0, length: 10)
-        time_label.text  = String(describing: matchdata.mdate).subString(start: 11, length: 9)
+        date_label.text  = String(describing: matchdata.mdate).subString(start: 0, length: 19)
+        //time_label.text  = String(describing: matchdata.mdate).subString(start: 11, length: 9)
         
         cell.accessoryType = .disclosureIndicator
         return cell

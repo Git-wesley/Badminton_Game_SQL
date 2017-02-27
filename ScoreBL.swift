@@ -32,13 +32,13 @@ open class ScoreBL {
         
         switch R0 {
         case 0...599:
-            K = 32
+            K = 16  //32
         case 600...799:
-            K = 24
+            K = 12 //24
         case 800...1000:
-            K = 16
+            K = 8 //16
         default :
-            K = 16
+            K = 12
         }
         let Z = differentScore/400
         let X = pow(10, -Z)

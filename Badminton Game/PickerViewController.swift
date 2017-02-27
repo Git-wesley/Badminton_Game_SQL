@@ -11,6 +11,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var pickerView2: UIPickerView!
     //数据持久对象db
     var db:SQLiteDB!
 
@@ -62,17 +63,27 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func saveClick(_ sender: Any) {
-        
+        //team1
         let row1 = self.pickerView.selectedRow(inComponent: 0)
         let row2 = self.pickerView.selectedRow(inComponent: 1)
         
-        let selected1 = self.pickerTeamData[row1] as! String
+        let selected1 = self.pickerUsersData[row1]  //let selected1 = self.pickerTeamData[row1] as! String
         let selected2 = self.pickerUsersData[row2] 
-        let title = String(format: "%@，%@", selected1, selected2)
-        let Team_user : [String] = [selected1,selected2]
+        let title = String(format: "Team1 : %@，%@", selected1, selected2)
+         let Team_user : [String] = [selected1,selected2]
         print(title)
+        //team2
+        let row1T2 = self.pickerView2.selectedRow(inComponent: 0)
+        let row2T2 = self.pickerView2.selectedRow(inComponent: 1)
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationSelectUser"), object: Team_user, userInfo: nil)
+        let selected1T2 = self.pickerUsersData[row1T2]  //let selected1 = self.pickerTeamData[row1] as! String
+        let selected2T2 = self.pickerUsersData[row2T2]
+        let titleT2 = String(format: "Team2 : %@，%@", selected1T2, selected2T2)
+        let Team_userT2 : [String] = [selected1T2,selected2T2]
+        print(titleT2)
+        let Team_Users : [String] = [Team_user[0],Team_user[1] ,Team_userT2[0],Team_userT2[1]]
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationSelectUser"), object: Team_Users, userInfo: nil)
         
         self.dismiss(animated: true, completion: nil)
       
@@ -90,7 +101,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
        	if (component == 0) {//Team个数
-            return self.pickerTeamData.count
+            return self.pickerUsersData.count //return self.pickerTeamData.count
            } else {//注册用户数
             return self.pickerUsersData.count
         }
@@ -99,15 +110,15 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     // MARK: --实现协议UIPickerViewDelegate方法
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        	if (component == 0) {//选择team
-            return self.pickerTeamData[row] as? String
+            return self.pickerUsersData[row]  //as? String // return self.pickerTeamData[row] as? String
            } else {//参赛人员
-            return self.pickerUsersData[row] as? String
+            return self.pickerUsersData[row] //as? String
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (component == 0) {
-            let seletedProvince = self.pickerTeamData[row] as! String
+            _ = self.pickerUsersData[row]
             //self.pickerUsersData = (self.pickerData[seletedProvince] as! NSArray) as! [String]
             self.pickerView.reloadComponent(1)
         }

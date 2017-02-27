@@ -18,6 +18,7 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var txtUname: UITextField!
     @IBOutlet var txtMobile: UITextField!
+    @IBOutlet weak var txtNickName: UITextField!
     var dropBoxView_currentTitle : String = ""
  
     @IBAction func DoneCloseKeyBoard(_ sender: Any) {
@@ -28,13 +29,16 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.txtUname.delegate = self
         self.txtUname.becomeFirstResponder()
+        self.txtNickName.delegate = self
+        self.txtNickName.becomeFirstResponder()
+
         
         //下拉选择框
         self.view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         let defaultTitle = "中级"
         self.dropBoxView_currentTitle = defaultTitle
         let choices = ["高级", "中级", "初级"]
-        let rect = CGRect(x: 135, y: 310, width: 130, height: 30)
+        let rect = CGRect(x: 135, y: 370, width: 130, height: 30)
         let dropBoxView = TGDropBoxView(parentVC: self, title: defaultTitle, items: choices, frame: rect)
         
         dropBoxView.isHightWhenShowList = true
@@ -63,22 +67,32 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         let user = User()
         user.date = Date() as NSDate
         user.name = txtUname.text! as NSString
-        user.nickname = ""
+        user.nickname = txtNickName.text! as NSString
         user.grade = self.dropBoxView_currentTitle as NSString
-        user.score = 500
+        switch user.grade {
+        case "高级":
+            user.score = 700
+        case "中级":
+            user.score = 500
+        case "初级":
+            user.score = 200
+        default:
+            user.score = 500
+        }
+        
         user.mobile = txtMobile.text! as NSString
         var reslist_User = Userbl.findByName(user)
         if reslist_User.count > 0{
             NSLog("用户名重复")
             let alertController = UIAlertController(title: "系统提示",
                                                     message: "用户名重复", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            let okAction = UIAlertAction(title: "好的", style: .default, handler: nil )/*{
+            let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            /*let okAction = UIAlertAction(title: "好的", style: .default, handler: {
                 action in
                 print("点击了确定")
             })*/
             alertController.addAction(cancelAction)
-            alertController.addAction(okAction)
+            //alertController.addAction(okAction)
             self.present(alertController, animated: false, completion: nil)
             
         } else {
@@ -115,6 +129,7 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
         //收起键盘
         NSLog("textFieldShouldReturn")
         self.txtUname.resignFirstResponder()
+        self.txtNickName.resignFirstResponder()
         return true
     }
     

@@ -117,8 +117,7 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
         let score = Double(String(userdata.score))
         let different_score = pkAverageScore - score!
         user.score = scoreBL.calculateScore(initscore: score!, Result_bool: result_bool, differentScore: different_score)
-        
-        userbl.modifyUser(user)
+       _ = userbl.modifyUser(user)
     }
 
     @IBAction func cancelClick(_ sender: Any) {
@@ -184,34 +183,29 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
             self.segueValue = "User3"
         case  "IdentifierUser4" :
             self.segueValue = "User4"
+        case  "IdentifierTeamA" :
+            self.segueValue = "TeamA"
+        case  "IdentifierTeamB" :
+            self.segueValue = "TeamB"
+
         default :
             self.segueValue = "User1"
          
         }
-        if (segue.identifier == "IdentifierUser2") {
-            self.segueValue = "User2"
-        }
-        
     }
 
     // MARK: --处理通知
     func reloadViewSelectUser(_ notification : Notification) {
         let resList_Match = notification.object as! NSArray
-        self.Select_User = resList_Match as! [String]
+        self.Select_User = resList_Match  as! [String]
         
-        switch segueValue {
-        case "User1" :
-            m_user1.text = self.Select_User[1]
-        case "User2" :
+        //switch segueValue {
+        
+            m_user1.text = self.Select_User[0]
             m_user2.text = self.Select_User[1]
-        case "User3" :
-            m_user3.text = self.Select_User[1]
-        case "User4" :
-            m_user4.text = self.Select_User[1]
-            
-        default:
-            m_user4.text = self.Select_User[1]
-        }
+            m_user3.text = self.Select_User[2]
+            m_user4.text = self.Select_User[3]
+        
         
         //self.tableView.reloadData()
         
