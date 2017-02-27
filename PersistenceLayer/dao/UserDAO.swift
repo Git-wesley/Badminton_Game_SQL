@@ -82,7 +82,7 @@ let usersTableName : String = "B_userDemo"
         //let umobile = model.mobile
         //let udate = model.date
         let ugrade = model.grade
-        let id_no = model.id_no
+        _ = model.id_no
         let uscore = model.score
        
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的

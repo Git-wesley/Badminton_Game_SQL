@@ -35,13 +35,21 @@ extension String {
 	}
 	
 	func urlEncoded()->String {
-		let res:NSString = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, self as NSString, nil,
+		/*let res:NSString = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, self as NSString, nil,
 			"!*'();:@&=+$,/?%#[]" as CFString!, CFStringConvertNSStringEncodingToEncoding(String.Encoding.utf8.rawValue))
+        //let res1 NSString = stringbyadd*/
+        
+        let strURL : NSString = ""
+        let res : NSString = strURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet(charactersIn:"!*'();:@&=+$,/?%#[]").inverted)! as NSString
 		return res as String
 	}
-	
+    
+   
+    
 	func urlDecoded()->String {
-		let res:NSString = CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault, self as NSString, "" as CFString!, CFStringConvertNSStringEncodingToEncoding(String.Encoding.utf8.rawValue))
+		/*let res:NSString = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, self as NSString, nil, "" as CFString!, CFStringConvertNSStringEncodingToEncoding(String.Encoding.utf8.rawValue))*/
+        let strURL : NSString = ""
+        let res : NSString = strURL.addingPercentEncoding(withAllowedCharacters: NSCharacterSet(charactersIn:"").inverted)! as NSString
 		return res as String
 	}
 	
