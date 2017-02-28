@@ -68,7 +68,13 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
         let resultStr = Ascore.text! + ":" + Bscore.text!
         let mResult = resultStr as NSString
         let mResult_bool = getMatchResult(Ascore: Ascore, Bscore: Bscore)
-        let mdate = NSDate()
+        //let mdate = NSDate()
+        // 设置系统时区为本地时区
+        let zone:NSTimeZone = NSTimeZone.system as NSTimeZone
+        // 计算本地时区与 GMT 时区的时间差
+        let second:Int = zone.secondsFromGMT
+        //转化成本地时间
+        let mdate:NSDate = NSDate(timeIntervalSinceNow: TimeInterval(second))
         
         let team1 = Team(user1: mName1,user2: mName2)
         let team2 = Team(user1: mName3,user2: mName4)

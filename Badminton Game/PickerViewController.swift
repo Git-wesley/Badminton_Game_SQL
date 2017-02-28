@@ -23,7 +23,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var pickerData : NSDictionary!          //保存全部数据
     var pickerUsersData : [String] = []
     var pickerUsersIDData : [Int] = []
-    var pickerTeamData: NSArray! = ["Team1", "Team2"]
+    var pickerTeamData: NSArray! = ["Team1", "Team2"] //不再用
     
     
     override func viewDidLoad() {
@@ -35,13 +35,13 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
            
             pickerUsersData.append(Sstring)
             pickerUsersIDData.append((array[index] as! User).id_no as Int)
-            
         }
+        
         pickerData = arrayToDictionary(pickerUsersData: pickerUsersData)
         
-        //默认取出第一个省的所有市的数据
+        //默认取出第一个数据
         let seletedProvince = self.pickerTeamData[0] as! String
-       self.pickerUsersData = (self.pickerData[seletedProvince] as! NSArray) as! [String]
+        self.pickerUsersData = (self.pickerData[seletedProvince] as! NSArray) as! [String]
         
     }
     
@@ -50,13 +50,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     open func arrayToDictionary(pickerUsersData : [String]) -> NSDictionary {
         
         let dict = NSDictionary(objects: [pickerUsersData, pickerUsersData], forKeys: ["Team1" as NSCopying, "Team2" as NSCopying])
-        
         return dict
-        
     }
 
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,7 +66,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let selected1 = self.pickerUsersData[row1]  //let selected1 = self.pickerTeamData[row1] as! String
         let selected2 = self.pickerUsersData[row2] 
         let title = String(format: "Team1 : %@，%@", selected1, selected2)
-         let Team_user : [String] = [selected1,selected2]
+        let  Team_user : [String] = [selected1,selected2]
         print(title)
         //team2
         let row1T2 = self.pickerView2.selectedRow(inComponent: 0)
@@ -81,7 +77,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let titleT2 = String(format: "Team2 : %@，%@", selected1T2, selected2T2)
         let Team_userT2 : [String] = [selected1T2,selected2T2]
         print(titleT2)
-        let Team_Users : [String] = [Team_user[0],Team_user[1] ,Team_userT2[0],Team_userT2[1]]
+        //let Team_Users : [String] = [Team_user[0],Team_user[1] ,Team_userT2[0],Team_userT2[1]]
+        let Team_Users = Team_user + Team_userT2
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadViewNotificationSelectUser"), object: Team_Users, userInfo: nil)
         
@@ -90,10 +87,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func cancelClick(_ sender: Any) {
-        
          self.dismiss(animated: true, completion: nil)
-        
     }
+    
     // MARK: --实现协议UIPickerViewDataSource方法
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2

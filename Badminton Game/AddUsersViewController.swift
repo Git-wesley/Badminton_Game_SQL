@@ -65,7 +65,15 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveClicked(_ sender: AnyObject) {
         
         let user = User()
-        user.date = Date() as NSDate
+        
+        
+        let zone:NSTimeZone = NSTimeZone.system as NSTimeZone
+        // 计算本地时区与 GMT 时区的时间差
+        let second:Int = zone.secondsFromGMT
+        //转化成本地时间
+        let mdate:NSDate = NSDate(timeIntervalSinceNow: TimeInterval(second))
+        user.date = mdate //Date() as NSDate
+        
         user.name = txtUname.text! as NSString
         user.nickname = txtNickName.text! as NSString
         user.grade = self.dropBoxView_currentTitle as NSString

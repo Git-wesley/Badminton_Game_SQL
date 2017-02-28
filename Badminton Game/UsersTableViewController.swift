@@ -118,5 +118,22 @@ class UsersTableViewController: UITableViewController {
         self.listDataUser = resList_User
         self.tableView.reloadData()
     }
+    //数组操作
+    func userDataToArray() -> Array<Any> {
+        
+        var DataUsers : Array = [""]
+        //var tempUsers : NSArray!
+        let array = self.listDataUser
+        //DataUsers.removeAll()
+        DataUsers.removeLast()
+        for row in 0...array.count-1 {
+            let userdata = array[row] as! User
+            //let strString : String  = userdata.name as String
+            // DataUsers.adding(userdata.name as String) as NSArray!
+            DataUsers.insert(userdata.name as String, at: row) //value(forKey: userdata.name as String)
+        }
+        
+        return DataUsers
+    }
 
 }
