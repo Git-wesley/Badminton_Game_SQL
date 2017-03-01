@@ -73,7 +73,6 @@ class MatchViewController: UIViewController ,UITextFieldDelegate{
         let zone:NSTimeZone = NSTimeZone.system as NSTimeZone
         // 计算本地时区与 GMT 时区的时间差
         let second:Int = zone.secondsFromGMT
-        //转化成本地时间
         let mdate:NSDate = NSDate(timeIntervalSinceNow: TimeInterval(second))
         
         let team1 = Team(user1: mName1,user2: mName2)

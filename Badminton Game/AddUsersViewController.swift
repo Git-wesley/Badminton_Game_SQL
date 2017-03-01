@@ -95,12 +95,7 @@ class AddUsersViewController: UIViewController, UITextFieldDelegate {
             let alertController = UIAlertController(title: "系统提示",
                                                     message: "用户名重复", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-            /*let okAction = UIAlertAction(title: "好的", style: .default, handler: {
-                action in
-                print("点击了确定")
-            })*/
             alertController.addAction(cancelAction)
-            //alertController.addAction(okAction)
             self.present(alertController, animated: false, completion: nil)
             
         } else {

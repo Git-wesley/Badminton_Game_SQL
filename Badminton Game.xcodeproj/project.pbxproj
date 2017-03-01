@@ -15,6 +15,8 @@
 		5877FF441DC6E5790094EBA2 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877FF411DC6E5790094EBA2 /* SQLTable.swift */; };
 		5877FF451DC6E5790094EBA2 /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877FF421DC6E5790094EBA2 /* String-Extras.swift */; };
 		5877FF471DC6E7420094EBA2 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 5877FF461DC6E7420094EBA2 /* data.db */; };
+		E0181D8B1E65427F003B0B38 /* PersonMatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0181D8A1E65427F003B0B38 /* PersonMatchesTableViewController.swift */; };
+		E0181D8D1E665ECD003B0B38 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0181D8C1E665ECD003B0B38 /* UserDefault.swift */; };
 		E05C87ED1E56D3630051468A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05C87EC1E56D3630051468A /* Main.storyboard */; };
 		E05C87EF1E56D3D50051468A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */; };
 		E05C87F31E5882030051468A /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05C87F21E5882020051468A /* UsersTableViewController.swift */; };
@@ -62,6 +64,8 @@
 		5877FF411DC6E5790094EBA2 /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		5877FF421DC6E5790094EBA2 /* String-Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extras.swift"; sourceTree = "<group>"; };
 		5877FF461DC6E7420094EBA2 /* data.db */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.db; sourceTree = "<group>"; };
+		E0181D8A1E65427F003B0B38 /* PersonMatchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonMatchesTableViewController.swift; sourceTree = "<group>"; };
+		E0181D8C1E665ECD003B0B38 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		E05C87EC1E56D3630051468A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E05C87EE1E56D3D50051468A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E05C87F21E5882020051468A /* UsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
@@ -131,9 +135,11 @@
 		5877FF0C1DC6E4BF0094EBA2 /* Badminton game */ = {
 			isa = PBXGroup;
 			children = (
+				E0181D8C1E665ECD003B0B38 /* UserDefault.swift */,
 				E05C87F81E5BDA0B0051468A /* DropBoxView.swift */,
 				5877FF0D1DC6E4BF0094EBA2 /* AppDelegate.swift */,
 				E05C87F21E5882020051468A /* UsersTableViewController.swift */,
+				E0181D8A1E65427F003B0B38 /* PersonMatchesTableViewController.swift */,
 				E05C88191E5E8A840051468A /* MatchesTableViewController.swift */,
 				5877FF0F1DC6E4BF0094EBA2 /* AddUsersViewController.swift */,
 				E05C87F41E5894FD0051468A /* AddMatchViewController.swift */,
@@ -319,6 +325,7 @@
 				5877FF451DC6E5790094EBA2 /* String-Extras.swift in Sources */,
 				5877FF431DC6E5790094EBA2 /* SQLiteDB.swift in Sources */,
 				E05C87F51E5894FD0051468A /* AddMatchViewController.swift in Sources */,
+				E0181D8B1E65427F003B0B38 /* PersonMatchesTableViewController.swift in Sources */,
 				E05C88031E5C26DB0051468A /* UserDAO.swift in Sources */,
 				E05C87F31E5882030051468A /* UsersTableViewController.swift in Sources */,
 				E05C881C1E5E8C3D0051468A /* MatchBL.swift in Sources */,
@@ -328,6 +335,7 @@
 				E05C87F91E5BDA0B0051468A /* DropBoxView.swift in Sources */,
 				E05C881A1E5E8A840051468A /* MatchesTableViewController.swift in Sources */,
 				5877FF101DC6E4BF0094EBA2 /* AddUsersViewController.swift in Sources */,
+				E0181D8D1E665ECD003B0B38 /* UserDefault.swift in Sources */,
 				5877FF0E1DC6E4BF0094EBA2 /* AppDelegate.swift in Sources */,
 				E05C88081E5D1E130051468A /* UserBL.swift in Sources */,
 				E05C88051E5C26E90051468A /* User.swift in Sources */,

@@ -56,6 +56,11 @@ open class MatchBL {
         let dao:MatchDAO = MatchDAO.sharedInstance
         return dao.findAll()
     }
-    
+    //用户名查询
+    open func findByUserName(_ model: Match) -> NSMutableArray {
+        let dao:MatchDAO = MatchDAO.sharedInstance
+        return dao.findByUserName(model)
+    }
+
 }
 

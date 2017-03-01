@@ -8,18 +8,23 @@
 
 import UIKit
 
+
 class UsersTableViewController: UITableViewController {
 
     
     var dictData: NSDictionary!
     var listData: NSArray!
+    var listDataUsers : Array = [""]
     //保存数据列表
     var listDataUser = NSMutableArray()
     //业务逻辑对象BL
     var bl = UserBL()
     var scoreBL = ScoreBL()
+    var base: baseClass = baseClass()
     
-    override func viewDidLoad() {
+    //定义一个方法给协议中得方法赋值
+    //在viewController中实现方法,这样在btn1,btn2中就可以不用实现,帮他们2个实现了.这就是代理.
+        override func viewDidLoad() {
         super.viewDidLoad()
         
         //let plistPath = Bundle.main.path(forResource: "provinces_cities", ofType: "plist"
@@ -33,6 +38,7 @@ class UsersTableViewController: UITableViewController {
             self.navigationItem.title = "用户积分排名"
             //查询所有的数据
             self.listDataUser = bl.findAllUser()
+            listDataUsers = userDataToArray() as! [String]
            
         }
         
@@ -67,11 +73,22 @@ class UsersTableViewController: UITableViewController {
         
         if (segue.identifier == "ShowDetail") {
             
-            let indexPath = self.tableView.indexPathForSelectedRow! as IndexPath
-            _ = indexPath.row
+            //let indexPath = self.tableView.indexPathForSelectedRow! as IndexPath
+            //_ = indexPath.row
+            //let controller = segue.destination as! PersonMatchesTableViewController
+            //controller.itemString = sender as? String
             }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView!.deselectRow(at: indexPath, animated: true)
+        let itemString = self.listDataUsers[indexPath.row]
+        
+        self.performSegue(withIdentifier: "ShowDetail", sender: itemString)
+        //通知传递user值
+        self.base.cacheSetString(key: "sign", value: itemString)
+        
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -128,8 +145,6 @@ class UsersTableViewController: UITableViewController {
         DataUsers.removeLast()
         for row in 0...array.count-1 {
             let userdata = array[row] as! User
-            //let strString : String  = userdata.name as String
-            // DataUsers.adding(userdata.name as String) as NSArray!
             DataUsers.insert(userdata.name as String, at: row) //value(forKey: userdata.name as String)
         }
         
